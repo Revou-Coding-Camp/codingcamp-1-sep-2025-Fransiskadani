@@ -1,4 +1,8 @@
+body {
+    align-content: center;
+    justify-items: center;
+}
+
 .container {
-    border : 1px solid black;
 
 }

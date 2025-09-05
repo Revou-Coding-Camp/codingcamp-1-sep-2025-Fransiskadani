@@ -3,28 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+    <title>My Todo List</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 <body>
-    <header>
-
+    <div class="todolist">
+    <!-- Header -->
+    <header class="mb-4">
+        <h1 class="text-3xl font-bold">My Todo List</h1>
     </header>
 
+    <!-- Main Section -->
+    <div class="container">
+        <!-- Todo Input Section -->
+        <section id="todo-input-section" class="py-4">
+            <form onsubmit="event.preventDefault(); validateInput();">
+                <input type="text" class="border p-2 rounded" id="todo-input" placeholder="Add a new task...">
+                <input type="date" class="border p-2 rounded" id="todo-date-input">
+                <select id="filterSelect" class="border p-2 rounded" onchange="saveFilter(this.value)">
+  <option value="all">All Tasks</option>
+  <option value="pending">Pending</option>
+  <option value="done">Done</option>
+</select>
 
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">+</button>
+            </form>
+        </section>
 
-    <main>
+        <!-- Action Buttons -->
+        <section class="flex justify-between mb-4">
+            <button class="bg-gray-500 text-white px-4 py-2 rounded" onclick="filterTodo()">Filter</button>
+            <button class="bg-red-500 text-white px-4 py-2 rounded" onclick="deleteAllTodo();">Delete All Tasks</button>
+        </section>
 
-    </main>
-
-
-
-    <footer>
+        <!-- Todo Table -->
+        <table class="border-collapse border border-gray-300 w-full" id="todoTable">
+            <thead>
+                <tr>
+                    <th class="border border-gray-300 px-4 py-2">Task</th>
+                    <th class="border border-gray-300 px-4 py-2">Due Date</th>
+                    <th class="border border-gray-300 px-4 py-2">Status</th>
+                    <th class="border border-gray-300 px-4 py-2">Actions</th>
+                </tr>
+            </thead>
+            <tbody id="todo-body">
+                <!-- isi todo akan muncul di sini -->
+            </tbody>
+        </table>
+    </div>
         
-    </footer>
-    <!-- Javascript -->
-    <script src="script.js"></script>
+        <div class="footer mt-4 text-center text-gray-500">
+            © 2025 My Todo List App
+        </div>
+    </main>
 </body>
+<script src="js/script.js"></script>
 </html>
