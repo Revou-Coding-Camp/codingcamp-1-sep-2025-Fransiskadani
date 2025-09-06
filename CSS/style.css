@@ -1,8 +1,12 @@
-body {
-    align-content: center;
-    justify-items: center;
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
-.container {
-
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

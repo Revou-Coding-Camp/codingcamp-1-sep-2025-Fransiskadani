@@ -7,56 +7,65 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
+
 <body>
-    <div class="todolist">
+<div class="todolist border border-gray-300 bg-white p-6 rounded-lg shadow-lg w-full max-w-3xl">
     <!-- Header -->
     <header class="mb-4">
-        <h1 class="text-3xl font-bold">My Todo List</h1>
+      <h1 class="text-3xl font-bold text-center">My Todo List</h1>
     </header>
 
     <!-- Main Section -->
-    <div class="container">
-        <!-- Todo Input Section -->
-        <section id="todo-input-section" class="py-4">
-            <form onsubmit="event.preventDefault(); validateInput();">
-                <input type="text" class="border p-2 rounded" id="todo-input" placeholder="Add a new task...">
-                <input type="date" class="border p-2 rounded" id="todo-date-input">
-                <select id="filterSelect" class="border p-2 rounded" onchange="saveFilter(this.value)">
-  <option value="all">All Tasks</option>
-  <option value="pending">Pending</option>
-  <option value="done">Done</option>
-</select>
+    <main class="container">
+      <!-- Todo Input Section -->
+      <section id="todo-input-section" class="py-4">
+        <form onsubmit="event.preventDefault(); validateInput();">
+          <input type="text" class="border p-2 rounded" id="todo-input" placeholder="Add a new task...">
+          <input type="date" class="border p-2 rounded" id="todo-date-input">
+          
+          <!-- STATUS untuk INPUT, bukan filter -->
+          <select id="status-input" class="border p-2 rounded">
+            <option value="pending">On Progress</option>
+            <option value="done">Done</option>
+          </select>
 
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">+</button>
-            </form>
-        </section>
+          <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">+</button>
+        </form>
+      </section>
 
-        <!-- Action Buttons -->
-        <section class="flex justify-between mb-4">
-            <button class="bg-gray-500 text-white px-4 py-2 rounded" onclick="filterTodo()">Filter</button>
-            <button class="bg-red-500 text-white px-4 py-2 rounded" onclick="deleteAllTodo();">Delete All Tasks</button>
-        </section>
-
-        <!-- Todo Table -->
-        <table class="border-collapse border border-gray-300 w-full" id="todoTable">
-            <thead>
-                <tr>
-                    <th class="border border-gray-300 px-4 py-2">Task</th>
-                    <th class="border border-gray-300 px-4 py-2">Due Date</th>
-                    <th class="border border-gray-300 px-4 py-2">Status</th>
-                    <th class="border border-gray-300 px-4 py-2">Actions</th>
-                </tr>
-            </thead>
-            <tbody id="todo-body">
-                <!-- isi todo akan muncul di sini -->
-            </tbody>
-        </table>
-    </div>
+      <!-- Filter & Delete -->
+      <section class="flex justify-between mb-4">
+        <select id="filterSelect" class=" bg-gray-500 text-white px-4 py-2 rounded" onchange="filterTodo(this.value)">
+          <option value="all">All Tasks</option>
+          <option value="pending">On Progress</option>
+          <option value="done">Done</option>
+        </select>
         
-        <div class="footer mt-4 text-center text-gray-500">
-            © 2025 My Todo List App
-        </div>
+        <button class="bg-red-500 text-white px-4 py-2 rounded" onclick="deleteAllTodo();">Delete All Tasks</button>
+      </section>
+
+      <!-- Todo Table -->
+      <table class="border-collapse border border-gray-300 w-full" id="todoTable">
+        <thead>
+          <tr>
+            <th class="border border-gray-300 px-4 py-2">Task</th>
+            <th class="border border-gray-300 px-4 py-2">Due Date</th>
+            <th class="border border-gray-300 px-4 py-2">Status</th>
+            <th class="border border-gray-300 px-4 py-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="todo-body">
+          <!-- isi todo akan muncul di sini -->
+        </tbody>
+      </table>
     </main>
+    
+    <!-- Footer -->
+    <div class="footer mt-4 text-center text-gray-500">
+      © 2025 My Todo List App
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
 </body>
-<script src="js/script.js"></script>
 </html>
